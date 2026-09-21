@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en" data-theme="haze">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>haze</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <script src="/scramjet/scramjet.js"></script>
+  <script src="/controller/controller.api.js"></script>
+  <link rel="stylesheet" href="index.css" />
+  <script src="search.js" defer></script>
+  <script type="module" src="index.js"></script>
+</head>
+<body>
+  <div class="glass-blobs" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="wallpaper" id="wallpaper" aria-hidden="true"></div>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-logo">haze</div>
+      <nav class="side-nav">
+        <button class="nav-item active" data-view="home" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+          <span>Home</span>
+        </button>
+        <button class="nav-item" data-view="games" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h4m-2-2v4"/><path d="M15.5 11h.01M18 13h.01"/><path d="M17.3 5H6.7a4.7 4.7 0 0 0-4.6 5.6l1 5.2A3 3 0 0 0 8 17.5l1.5-1.5h5L16 17.5a3 3 0 0 0 4.9-1.7l1-5.2A4.7 4.7 0 0 0 17.3 5Z"/></svg>
+          <span>haze games</span>
+        </button>
+        <button class="nav-item" data-view="settings" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.01a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+      <div class="sidebar-foot">scramjet v2</div>
+    </aside>
+
+    <main class="main">
+      <!-- ===================== HOME ===================== -->
+      <section class="view view-home active" data-view-section="home">
+        <h1 class="logo">haze</h1>
+
+        <form id="sj-form" autocomplete="off">
+          <input
+            id="sj-search-engine"
+            value="https://search.brave.com/search?q=%s"
+            type="hidden"
+          />
+          <input id="sj-address" type="text" placeholder="Search Brave or type a URL" autofocus />
+        </form>
+
+        <nav class="shortcuts">
+          <button data-url="https://www.youtube.com" type="button">YouTube</button>
+          <button data-url="https://discord.com" type="button">Discord</button>
+          <button data-url="https://open.spotify.com" type="button">Spotify</button>
+          <button data-url="https://www.tiktok.com" type="button">TikTok</button>
+        </nav>
+
+        <p id="sj-error"></p>
+        <pre id="sj-error-code"></pre>
+      </section>
+
+      <!-- ===================== HAZE GAMES ===================== -->
+      <section class="view view-games" data-view-section="games">
+        <div class="view-head games-head">
+          <div>
+            <h2>haze games</h2>
+            <p class="muted">Hundreds of browser games, built in. Runs natively — no proxy needed.</p>
+          </div>
+          <button id="games-fullscreen" class="ghost-btn" type="button">⛶&nbsp; Fullscreen</button>
+        </div>
+        <div class="games-wrap">
+          <iframe id="games-frame" src="/games.html" title="haze games"></iframe>
+        </div>
+      </section>
+
+      <!-- ===================== SETTINGS ===================== -->
+      <section class="view view-settings" data-view-section="settings">
+        <div class="view-head">
+          <h2>Settings</h2>
+          <p class="muted">Everything is saved locally on this device.</p>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3>Theme</h3>
+            <p class="muted">Change how haze looks.</p>
+            <div class="theme-grid" id="theme-grid"></div>
+          </div>
+
+          <div class="settings-card">
+            <h3>Wallpaper</h3>
+            <p class="muted">Upload your own background image.</p>
+            <label class="upload-btn">
+              Upload your own
+              <input id="wallpaper-input" type="file" accept="image/*" hidden />
+            </label>
+            <button id="wallpaper-clear" class="ghost-btn" type="button" hidden>Remove wallpaper</button>
+            <div id="wallpaper-preview" class="wallpaper-preview" hidden></div>
+          </div>
+
+          <div class="settings-card">
+            <h3>Search engine</h3>
+            <p class="muted">Used when you type a search instead of a URL. Brave is the default.</p>
+            <select id="engine-select">
+              <option value="brave">Brave (default)</option>
+              <option value="google">Google</option>
+              <option value="duckduckgo">DuckDuckGo</option>
+              <option value="bing">Bing</option>
+              <option value="startpage">Startpage</option>
+            </select>
+          </div>
+
+          <div class="settings-card">
+            <h3>About</h3>
+            <p class="muted">
+              haze — scramjet v2 web proxy with wisp transport.
+              Themes, wallpapers and search settings stay on your device.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button id="frame-exit" class="frame-exit" type="button" hidden>&#10005;&nbsp; exit</button>
+</body>
+</html>
