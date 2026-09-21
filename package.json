@@ -1,0 +1,28 @@
+{
+  "name": "haze",
+  "version": "1.0.0",
+  "description": "haze - black & white Scramjet web proxy",
+  "type": "module",
+  "packageManager": "pnpm@10.18.3",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@mercuryworkshop/scramjet",
+      "bufferutil",
+      "utf-8-validate"
+    ]
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "@mercuryworkshop/libcurl-transport": "2.0.5",
+    "@mercuryworkshop/scramjet": "https://github.com/MercuryWorkshop/scramjet/releases/download/v2.0.67-alpha.2/mercuryworkshop-scramjet-2.0.67-alpha.2.tgz",
+    "@mercuryworkshop/scramjet-controller": "https://github.com/MercuryWorkshop/scramjet/releases/download/v2.0.67-alpha.2/mercuryworkshop-scramjet-controller-0.0.14.tgz",
+    "@mercuryworkshop/wisp-js": "^0.4.1",
+    "ws": "^8.18.3"
+  }
+}
